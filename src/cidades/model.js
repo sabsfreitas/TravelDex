@@ -2,12 +2,13 @@ const { DataTypes, Model } = require('sequelize');
 
 const { sequelizeCon } = require('../config/db-config');
 const { Registro } = require('../registros/model');
+const { Usuario } = require('../usuarios/model');
 
 class Cidade extends Model {}
     
 Cidade.init({
     id: {
-        type: DataTypes.UUIDV1,
+        type: DataTypes.UUID,
         primaryKey: true
     },
     nome: DataTypes.STRING,
@@ -21,15 +22,21 @@ Cidade.init({
     modelName: 'cidade'
 });
 
-Cidade.hasMany(Registro, 
-    {
-        foreignKey: 'idCidade',
-        onDelete: 'CASCADE'
-    });
 
-Registro.belongsTo(Cidade,
+Cidade.belongsToMany(Usuario, 
 {
+    through: Registro,
+    as: 'usuarios',
     foreignKey: 'idCidade'
 });
+
+Usuario.belongsToMany(Cidade, 
+{
+    through: Registro,
+    as: 'cidades',
+    foreignKey: 'emailUsuario'
+});
+
+sequelizeCon.sync();
 
 module.exports = { Cidade };

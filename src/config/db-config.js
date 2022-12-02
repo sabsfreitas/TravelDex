@@ -9,11 +9,13 @@ const sequelizeCon = new Sequelize('postgresql://postgres:oXM2ueelkQBsM8tWAVCd@c
     },
 });
 
-try {
-    await sequelizeCon.authenticate();
+sequelizeCon
+  .authenticate()
+  .then(() => {
     console.log('Connection has been established successfully.');
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
-  }
+  })
+  .catch(err => {
+    console.log('Unable to connect to the database:', err);
+});
 
 module.exports = { sequelizeCon };
