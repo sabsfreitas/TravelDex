@@ -14,12 +14,21 @@ class RegistrosRepository {
     }
 
     async userEntries(email) {
-        const regs = await Registro.findAll({ 
+        const regs = await Registro.findAndCountAll({ 
             where: { emailUsuario: email }
         });
+        let dex = [];
+        for (let index = 0; index < regs.rows.length; index++) {
+            const element = regs.rows[index];
+            const id = element.idCidade;
+            const [findById] = await sequelizeCon.query(`SELECT nome FROM cidades WHERE cidades.id = '${id}'`);
+            dex.push(findById);
+        }
 
+        const allCities = await Cidade.findAndCountAll();
+        const count = 'Esse usuário tem ' +regs.count+ ' cidades registradas de um total de '+allCities.count+' cidades.';
         return {
-            regs
+            regs, count, dex
         }
     }
 

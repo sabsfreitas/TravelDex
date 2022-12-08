@@ -1,14 +1,10 @@
 const express = require('express');
 const app = express();
 
-const { validaUsuario } = require('./validators/usuario');
-const { isAuth } = require('./middlewares/isAuth');
-
-//const Joi = require('joi');
-//const cors = require('cors');
+const cors = require('cors');
 
 app.use(express.json());
-//app.use(cors());
+app.use(cors());
 
 app.use(express.urlencoded({
     extended: true,

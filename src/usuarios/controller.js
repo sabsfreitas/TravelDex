@@ -4,6 +4,9 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { validaUsuario } = require("../validators/usuario");
 const { validaUsuarioAuth } = require("../validators/usuario");
+const { validaBuscaUsers } = require("../validators/usuario");
+const { validaListUsers } = require("../validators/usuario");
+const { validaProfileSchema } = require("../validators/usuario");
 const { Sequelize } = require('sequelize');
 
 class UsuariosController {
@@ -48,11 +51,11 @@ class UsuariosController {
   async auth(req, res) {
     const { email, senha } = req.body;
 
-    const checaAuth = await validaUsuarioAuth(req.body);
-
-    if(checaAuth) {
-      return res.status(400).json({ msg: 'Formato inválido' });
-    }
+    try {
+      const checaValidacao = await validaUsuarioAuth(req.body);
+      if(checaValidacao) {
+        return res.status(400).json({ msg: 'Formato inválido' });
+      }
 
     const user = await Usuario.findOne({
       where: {
@@ -84,9 +87,17 @@ class UsuariosController {
     } else {
       return res.status(400).json({ msg: "E-mail ou senha inválidos" });
     }
+  } catch(err) {
+    return res.status(500).json({ msg: 'Erro no servidor' });
+    }
   }
 
   async list(req, res) {
+    try {
+      const checaValidacao = await validaListUsers(req.query);
+      if(checaValidacao) {
+        return res.status(400).json({ msg: 'Formato inválido' });
+      }
     let { limit, offset } = req.query;
     if (!limit) limit = 10;
     if (!offset) offset = 0;
@@ -108,9 +119,15 @@ class UsuariosController {
   }
   catch(err) {
     return res.status(500).json({ msg: 'Erro no servidor' });
+  } 
   }
 
   async profile(req, res) {
+    try {
+      const checaValidacao = await validaProfileSchema(req.params);
+      if(checaValidacao) {
+        return res.status(400).json({ msg: 'Formato inválido' });
+      }
     const { email } = req.params;
     const user = await Usuario.findByPk(email);
     const regs = await this.repository.userEntries(email);
@@ -126,7 +143,10 @@ class UsuariosController {
     } else {
       return res.status(404).json({ msg: "Este usuário não está cadastrado." });
     }
-  }
+  } catch(err) {
+    return res.status(500).json({ msg: 'Erro no servidor' });
+  } 
+}
 
   async delete(req, res) {
     const email = req.user.email;
@@ -144,6 +164,11 @@ class UsuariosController {
   }
 
   async buscaUsuarios(req, res) {
+    try {
+      const checaValidacao = await validaBuscaUsers(req.query);
+      if(checaValidacao) {
+        return res.status(400).json({ msg: 'Formato inválido' });
+      }
     let { search, limit, offset } = req.query;
     if (!limit) limit = 10;
     if (!offset) offset = 0;
@@ -165,6 +190,7 @@ class UsuariosController {
     let status = err.status || 500;
     return res.status(status).json({ msg: err.message });
   }
+}
 }
 
 module.exports = UsuariosController;

@@ -27,8 +27,7 @@ const buscaUsersSchema = Joi.object({
 
 const listUserSchema = Joi.object({
     offset: Joi.number(),
-    limit: Joi.number(),
-    search: Joi.string()
+    limit: Joi.number()
 });
 
 const profileSchema = Joi.object({
@@ -57,4 +56,37 @@ const validaUsuarioAuth = (user) => {
     }
 }
 
-module.exports = { validaUsuario, validaUsuarioAuth };
+const validaBuscaUsers = (user) => {
+
+    const validacao = buscaUsersSchema.validate(user, {
+        abortEarly: false
+    });
+
+    if (validacao.error) {
+        return validacao.error;
+    }
+}
+
+const validaListUsers = (user) => {
+
+    const validacao = listUserSchema.validate(user, {
+        abortEarly: false
+    });
+
+    if (validacao.error) {
+        return validacao.error;
+    }
+}
+
+const validaProfileSchema = (user) => {
+
+    const validacao = profileSchema.validate(user, {
+        abortEarly: false
+    });
+
+    if (validacao.error) {
+        return validacao.error;
+    }
+}
+
+module.exports = { validaUsuario, validaUsuarioAuth, validaBuscaUsers, validaListUsers, validaProfileSchema };

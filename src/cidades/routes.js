@@ -5,10 +5,8 @@ const router = Router();
 const CidadesController = require('./controller');
 const controller = new CidadesController();
 
-router.post('/', isAuth, (req, res) => controller.create(req, res));
+// router.post('/', (req, res) => controller.create(req, res)); // USUÁRIO NÃO CRIA CIDADE!
 router.get('/', isAuth, (req, res) => controller.list(req, res));
 router.get('/:id', isAuth, (req, res) => controller.detail(req, res));
-//router.put('/:id', isAuth, (req, res) => controller.update(req, res));
-//router.delete('/:id', isAuth, (req, res) => controller.delete(req, res));
 
 module.exports = router;

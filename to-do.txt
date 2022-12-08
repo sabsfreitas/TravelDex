@@ -16,7 +16,7 @@ Backend
     * Persistência dos dados em um banco PostgreSQL  (quem tiver com dificuldades aqui me pede ajuda para não deixar para a última hora). // OK
     * API de consulta paginada e ordenada // OK
     * Soft Delete de perfil (outros usuários não conseguem mais visualizar deste usuário) // OK
-    * Endpoints de Estatísticas do Usuário em relação ao mundo - no perfil
+    * Endpoints de Estatísticas do Usuário em relação ao mundo - no perfil // OK
     * Upload de Imagem (do perfil do usuário e/ou do item colecionável) // OK
     * Autorização - apenas o usuário pode marcar sua própria coleção // OK
 
