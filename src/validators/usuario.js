@@ -1,4 +1,5 @@
 const Joi = require("joi");
+const { Usuario } = require("../usuarios/model");
 
 const userSchema = Joi.object({
     nome: Joi.string()
@@ -13,6 +14,27 @@ const userSchema = Joi.object({
     email: Joi.string().email().required()
 });
 
+const authUserSchema = Joi.object({
+    senha: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).required(),
+    email: Joi.string().email().required()
+});
+
+const buscaUsersSchema = Joi.object({
+    offset: Joi.number(),
+    limit: Joi.number(),
+    search: Joi.string().required()
+});
+
+const listUserSchema = Joi.object({
+    offset: Joi.number(),
+    limit: Joi.number(),
+    search: Joi.string()
+});
+
+const profileSchema = Joi.object({
+    email: Joi.string().required()
+});
+
 const validaUsuario = (user) => {
 
     const validacao = userSchema.validate(user, {
@@ -24,4 +46,15 @@ const validaUsuario = (user) => {
     }
 }
 
-module.exports = { validaUsuario };
+const validaUsuarioAuth = (user) => {
+
+    const validacao = authUserSchema.validate(user, {
+        abortEarly: false
+    });
+
+    if (validacao.error) {
+        return validacao.error;
+    }
+}
+
+module.exports = { validaUsuario, validaUsuarioAuth };

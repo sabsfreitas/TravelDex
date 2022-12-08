@@ -25,15 +25,15 @@ Cidade.init({
 
 Cidade.belongsToMany(Usuario, 
 {
+    as: 'CidadesDoUsuario',
     through: Registro,
-    as: 'usuarios',
     foreignKey: 'idCidade'
 });
 
 Usuario.belongsToMany(Cidade, 
 {
+    as: 'UsuarioNaCidade',
     through: Registro,
-    as: 'cidades',
     foreignKey: 'emailUsuario'
 });
 

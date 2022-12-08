@@ -1,27 +1,27 @@
 Requisitos básicos
-    * Cada Dex pertence a um usuário, logo, deve ser possível se cadastrar na plataforma e computar seus itens na sua Dex.
+    * Cada Dex pertence a um usuário, logo, deve ser possível se cadastrar na plataforma e computar seus itens na sua Dex. // OK
 
-    * Deve existir uma forma de buscar por Colecionadores, ou lista paginada ou busca.
+    * Deve existir uma forma de buscar por Colecionadores, ou lista paginada ou busca. // OK
 
-    * A pessoa dona de uma conta na sua plataforma Dex, deve poder adicionar um item na sua coleção (vinculado/foreignKey), com algum tipo de evidência, foto (resize e armazenem no banco em Base64 tipo texto), link de vídeo.
-        - Deve ser possível deletar um item.
+    * A pessoa dona de uma conta na sua plataforma Dex, deve poder adicionar um item na sua coleção (vinculado/foreignKey), com algum tipo de evidência, foto (resize e armazenem no banco em Base64 tipo texto), link de vídeo. // OK
+        - Deve ser possível deletar um item. // OK
 
-    * A coleção inicial apresentada deve possuir pelo menos 50 itens.
+    * A coleção inicial apresentada deve possuir pelo menos 50 itens. // OK
 
 Backend
-    * Deve ser desenvolvido em NodeJS + Express + Sequelize TypeOrm
-    * Senha criptografada
-    * Validação das chamadas com JOI ou YUP
-    * Sequelize ORM ou TypeOrm 
-    * Persistência dos dados em um banco PostgreSQL  (quem tiver com dificuldades aqui me pede ajuda para não deixar para a última hora).
-    * API de consulta paginada e ordenada
-    * Soft Delete de perfil (outros usuários não conseguem mais visualizar deste usuário)
+    * Deve ser desenvolvido em NodeJS + Express + Sequelize TypeOrm // OK
+    * Senha criptografada // OK
+    * Validação das chamadas com JOI ou YUP // OK -- FALTA O RESTO!
+    * Sequelize ORM ou TypeOrm  // OK
+    * Persistência dos dados em um banco PostgreSQL  (quem tiver com dificuldades aqui me pede ajuda para não deixar para a última hora). // OK
+    * API de consulta paginada e ordenada // OK
+    * Soft Delete de perfil (outros usuários não conseguem mais visualizar deste usuário) // OK
     * Endpoints de Estatísticas do Usuário em relação ao mundo - no perfil
-    * Upload de Imagem (do perfil do usuário e/ou do item colecionável)
-    * Autorização - apenas o usuário pode marcar sua própria coleção
+    * Upload de Imagem (do perfil do usuário e/ou do item colecionável) // OK
+    * Autorização - apenas o usuário pode marcar sua própria coleção // OK
 
     * Dupla
-        - Ranking mundo (quem tem mais itens (5 primeiros), quais os itens que mais pessoas possuem (5 primeiros))
+        - Ranking mundo (quem tem mais itens (5 primeiros), quais os itens que mais pessoas possuem (5 primeiros)) // OK
 
 Frontend
     * React + Styled Components

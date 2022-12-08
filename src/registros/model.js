@@ -9,7 +9,7 @@ Registro.init({
         type: DataTypes.UUID,
         primaryKey: true
     },
-    foto: DataTypes.STRING
+    foto: DataTypes.TEXT
 }, { 
     sequelize: sequelizeCon, 
     modelName: 'registro'
