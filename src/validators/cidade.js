@@ -10,14 +10,11 @@ const cidadeSchema = Joi.object({
 });
 
 const validaCidade = (cidade) => {
-
     const validacao = cidadeSchema.validate(cidade, {
         abortEarly: false
     });
 
-    if (validacao.error) {
-        return validacao.error;
-    }
-}
+    return validacao.error ? validacao.error : null;
+};
 
 module.exports = { validaCidade };

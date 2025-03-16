@@ -21,7 +21,7 @@ class RegistrosRepository {
         for (let index = 0; index < regs.rows.length; index++) {
             const element = regs.rows[index];
             const id = element.idCidade;
-            const [findById] = await sequelizeCon.query(`SELECT nome FROM cidades WHERE cidades.id = '${id}'`);
+            const [findById] = await sequelizeCon.query(`SELECT nome FROM travel_dex.cidades WHERE cidades.id = '${id}'`);
             dex.push(findById);
         }
 
@@ -58,7 +58,7 @@ class RegistrosRepository {
             const element = regs[i];
             let emailAll = element.emailUsuario;
             let qtdCidades = element.dataValues.userEntries;
-        const [nameFromRegs] = await sequelizeCon.query(`SELECT nome FROM usuarios WHERE usuarios.email = '${emailAll}'`);
+        const [nameFromRegs] = await sequelizeCon.query(`SELECT nome FROM travel_dex.usuarios WHERE usuarios.email = '${emailAll}'`);
      nomes = [...nomes, nameFromRegs, qtdCidades]
     };
      return {
@@ -82,7 +82,7 @@ class RegistrosRepository {
             let idCidade = element.idCidade;
             let qtdCidades = element.dataValues.cityEntries;
             
-        const [nameFromRegs] = await sequelizeCon.query(`SELECT nome FROM cidades WHERE cidades.id = '${idCidade}'`);
+        const [nameFromRegs] = await sequelizeCon.query(`SELECT nome FROM travel_dex.cidades WHERE cidades.id = '${idCidade}'`);
      nomes = [...nomes, nameFromRegs, qtdCidades]
     };
         return {

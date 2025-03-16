@@ -9,11 +9,19 @@ Registro.init({
         type: DataTypes.UUID,
         primaryKey: true
     },
+    emailUsuario: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    idCidade: {
+        type: DataTypes.UUID,
+        allowNull: false
+    },
     foto: DataTypes.TEXT
 }, { 
     sequelize: sequelizeCon, 
     modelName: 'registro',
-    schema: 'travel_dex', 
+    schema: 'travel_dex',
 });
 
 module.exports = { Registro };
