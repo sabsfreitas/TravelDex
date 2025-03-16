@@ -19,7 +19,8 @@ Cidade.init({
     pontosTuristicos: DataTypes.JSON
 }, { 
     sequelize: sequelizeCon, 
-    modelName: 'cidade'
+    modelName: 'cidade',
+    schema: 'travel_dex', 
 });
 
 

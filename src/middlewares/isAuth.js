@@ -1,17 +1,22 @@
 const jwt = require("jsonwebtoken");
+require('dotenv').config()
 const { Usuario } = require('../usuarios/model');
 
 const isAuth = (req, res, next) => {
-  const token = req.headers["authorization"];
-  if (!token) {
-    return res.status(401).json({ msg: "missing authorization token" });
+  const authHeader = req.headers["authorization"];
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    return res.status(401).json({ msg: "Invalid or missing authorization token" });
   }
 
-  const tokenValidado = jwt.verify(token, "Secret não poderia estar hardcoded");
- // console.log({ tokenValidado });
-  
-  req.user = tokenValidado;
-  next();
+  const token = authHeader.split(" ")[1];
+
+  try {
+    const tokenValidado = jwt.verify(token, process.env.JWT_SECRET || "minhaChaveSecreta");
+    req.user = tokenValidado;
+    next();
+  } catch (err) {
+    return res.status(403).json({ msg: "Invalid token" });
+  }
 };
 
 module.exports = { isAuth };

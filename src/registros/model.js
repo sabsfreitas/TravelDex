@@ -12,7 +12,8 @@ Registro.init({
     foto: DataTypes.TEXT
 }, { 
     sequelize: sequelizeCon, 
-    modelName: 'registro'
+    modelName: 'registro',
+    schema: 'travel_dex', 
 });
 
 module.exports = { Registro };

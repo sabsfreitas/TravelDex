@@ -8,6 +8,7 @@ const { validaBuscaUsers } = require("../validators/usuario");
 const { validaListUsers } = require("../validators/usuario");
 const { validaProfileSchema } = require("../validators/usuario");
 const { Sequelize } = require('sequelize');
+require('dotenv').config()
 
 class UsuariosController {
   constructor() {
@@ -79,9 +80,10 @@ class UsuariosController {
 
     if (checa) {
       const meuJwt = jwt.sign(
-        user.dataValues,
-        "Secret não poderia estar hardcoded"
-      );
+        { id: user.id, email: user.email },
+        process.env.JWT_SECRET || "minhaChaveSecreta",
+        { expiresIn: "1h" }
+      );      
 
       return res.json(meuJwt);
     } else {

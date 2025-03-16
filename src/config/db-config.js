@@ -1,6 +1,7 @@
 const { Sequelize } = require('sequelize');
+require('dotenv').config()
 
-const sequelizeCon = new Sequelize('postgresql://postgres:oXM2ueelkQBsM8tWAVCd@containers-us-west-92.railway.app:6196/railway', {
+const sequelizeCon = new Sequelize(process.env.DATABASE_URL, {
     dialectOptions: {
         ssl: {
             require: true,

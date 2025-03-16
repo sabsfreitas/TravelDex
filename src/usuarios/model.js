@@ -14,7 +14,8 @@ Usuario.init({
     ativo: DataTypes.BOOLEAN
 }, { 
     sequelize: sequelizeCon,
-    modelName: 'usuario'
+    modelName: 'usuario',
+    schema: 'travel_dex', 
 });
 
 module.exports = { Usuario };
