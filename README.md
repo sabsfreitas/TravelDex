@@ -1,6 +1,6 @@
 # TravelDex
 
-TravelDex é uma API para gerenciar registros de cidades visitadas pelos usuários. Permite que usuários adicionem cidades com fotos, consultem cidades registradas e vejam TOP usuário mais ativos e TOP cidades mais populares.
+TravelDex é uma API para gerenciar registros de cidades visitadas pelos usuários. Permite que usuários adicionem registros com fotos às cidades em suas viagens, consultem cidades registradas e vejam TOP usuário mais ativos e TOP cidades mais populares.
 
 ## 🚀 Funcionalidades
 
