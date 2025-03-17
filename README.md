@@ -56,8 +56,11 @@ TravelDex é uma API para gerenciar registros de cidades visitadas pelos usuári
 ## 🔥 Rotas da API
 
 ### 📌 Usuários
-- `POST /usuarios/` - Cria um novo usuário
+- `POST /usuarios/register` - Cria um novo usuário
 - `POST /usuarios/auth` - Autentica um usuário
+- `GET /usuarios/` - Listagem de usuários cadastrados (Rota protegida)
+- `GET /usuarios/profile/:email` - Perfil de um usuário (Rota protegida)
+- `POST /usuarios/search` - Procura um usuário (Rota protegida)
 
 ### 🌍 Cidades
 - `GET /cidades` - Lista todas as cidades (Rota protegida)
