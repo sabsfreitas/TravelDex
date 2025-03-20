@@ -50,7 +50,7 @@ TravelDex é uma API para gerenciar registros de cidades visitadas pelos usuári
 
 5. Inicie o servidor:
    ```sh
-   npm start
+   npm run dev
    ```
 
 ## 🔥 Rotas da API
