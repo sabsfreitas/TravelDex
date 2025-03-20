@@ -35,7 +35,7 @@ TravelDex é uma API para gerenciar registros de cidades visitadas pelos usuári
    npm install
    ```
 
-3. Configure o banco de dados no arquivo `.env`:
+3. Configure as variáveis de ambiente no arquivo `.env`:
    ```env
    JWT_SECRET=sua_chave_secreta
    JWT_EXPIRES=1h
